@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+
+  <title>Temperature Converter</title>
+
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col-md-6 text-center">
+        <h1>Temperature Converter</h1>
+
+        <div id="celsius">
+          <input type="number" class="form-control form-control-lg form-padding" id="input-celsius"
+            placeholder="celsius" oninput="convertTemperature('celsius', this.value)">
+        </div>
+
+        <div id="fahrenheit">
+          <input type="number" class="form-control form-control-lg form-padding" id="input-fahrenheit"
+            placeholder="fahrenheit" oninput="convertTemperature('fahrenheit', this.value)">
+        </div>
+
+        <div id="kelvin">
+          <input type="number" class="form-control form-control-lg form-padding" id="input-kelvin"
+            placeholder="kelvin" oninput="convertTemperature('kelvin', this.value)">
+        </div>
+
+      </div>
+    </div>
+    <footer>
+      <p>By PK Sharma</p>
+      <p><a href="https://github.com/itsellej" target="_blank"><img class="icons"
+            src="https://res.cloudinary.com/itsellej/image/upload/v1533400136/rock-paper-scissors/github-icon.png"
+            alt="Github icon"></a>
+      </p>
+      <p><em>Credit - icons from <a href="https://pngtree.com/">pngtree</a></em></p>
+    </footer>
+  </div>
+
+  <script src="main.js" charset="utf-8"></script>
+  <script>
+    function convertTemperature(inputType, value) {
+      const celsiusInput = document.getElementById('input-celsius');
+      const fahrenheitInput = document.getElementById('input-fahrenheit');
+      const kelvinInput = document.getElementById('input-kelvin');
+
+      // Convert Celsius to Fahrenheit and Kelvin
+      if (inputType === 'celsius') {
+        fahrenheitInput.value = (value * 9 / 5) + 32;
+        kelvinInput.value = parseFloat(value) + 273.15;
+      }
+      // Convert Fahrenheit to Celsius and Kelvin
+      else if (inputType === 'fahrenheit') {
+        celsiusInput.value = (value - 32) * 5 / 9;
+        kelvinInput.value = ((value - 32) * 5 / 9) + 273.15;
+      }
+      // Convert Kelvin to Celsius and Fahrenheit
+      else if (inputType === 'kelvin') {
+        celsiusInput.value = value - 273.15;
+        fahrenheitInput.value = ((value - 273.15) * 9 / 5) + 32;
+      }
+    }
+  </script>
+</body>
+
+</html>
